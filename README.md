@@ -1,3 +1,3 @@
 # tablesToExcel
-Pour telecharger plusieurs tables html au moyen de leurs identifiants
+Pour telecharger plusieurs tables html dans un meme fichier Excel au moyen de leurs identifiants
 
