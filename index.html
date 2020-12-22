@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  
+
+<table id="MsoNormalTable">
+        <tr>
+            <th>sampleT1</th>
+            <th>sampleT1</th>
+            <th>sampleT1</th>
+        </tr>
+        <tr>
+            <td>sampleV1</td>
+            <td>sampleV1</td>
+            <td>sampleV1</td>
+        </tr>
+    </table>
+    <table id="MsoNormalTable2">
+        <tr>
+            <th>sampleT2</th>
+            <th>sampleT2</th>
+            <th>sampleT2</th>
+        </tr>
+        <tr>
+            <td>sampleV2</td>
+            <td>sampleV2</td>
+            <td>sampleV2</td>
+        </tr>
+    </table>
+    <button className="btn btn-primary" id="valider"><i className="fa fa-download"></i> Export all to excel</button>
+    <iframe id="txtArea1" className="displayNo" style="display: none;"></iframe>
+
+    <script>
+            function tablesToExcel(){
+                alert("ok");
+        var tab_text = document.getElementById("MsoNormalTable").outerHTML+document.getElementById("MsoNormalTable2").outerHTML;
+        var textRange; var j = 0;
+        var sa;
+
+        var ua = window.navigator.userAgent;
+        var msInternetExp = ua.indexOf("MSIE");
+        var txt = document.getElementById('txtArea1').contentWindow;
+        if (msInternetExp > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        {
+            txt.document.open("txt/html", "replace");
+            txt.document.write(tab_text);
+            txt.document.close();
+            txt.focus();
+            sa = txt.document.execCommand("SaveAs", true, "Say Thanks to Submit.xls");
+        }
+        else   {
+            sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+        return (sa);
+    }
+
+            }
+    var element= document.querySelector("#valider");
+
+    element.addEventListener("click",function(){
+        tablesToExcel();
+    });
+   </script>
+
+</body>
+</html>
